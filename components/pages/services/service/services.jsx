@@ -1,0 +1,40 @@
+import Link from 'next/link';
+import CtaArea from '../../homes/home/cta';
+import Solution from './solution';
+import Testimonial from '../../homes/home/testimonial';
+import servicesData from '@/components/data/services-data';
+
+const ServicesMain = () => {
+    return (
+        <>
+        <div className="services__page-two section-padding-two"> {/* Changed container class */}
+            <div className="container">
+                <div className="row">
+                    {servicesData?.map((data, id) => (
+                        <div className="col-xl-4 col-lg-4 col-md-6 mt-25" key={id}>
+                            {/* Changed service item class from services__three-item to services__two-item */}
+                            <div className="services__two-item page"> 
+                                <img src={data.image.src} alt="image" />
+                                {/* Changed content class from services__three-item-content to services__two-item-content */}
+                                <div className="services__two-item-content page">
+                                    {/* Changed icon wrapper class */}
+                                    <div className="services__two-item-content-icon">
+                                        {data.icon}
+                                    </div>
+                                    <h4><Link href={`/services/${data.id}`}>{data.title}</Link></h4>
+                                    <p>{data.description}</p>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+            <CtaArea />    
+            <Solution />
+            <Testimonial />
+        </>
+    );
+};
+
+export default ServicesMain;
