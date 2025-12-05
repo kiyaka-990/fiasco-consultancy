@@ -8,33 +8,34 @@ import SwitchTab from '@/components/pages/common/dark-light';
 import HeaderTwo from '@/components/layout/headers/header-two'; 
 import FooterTwo from '@/components/layout/footers/footer-two'; 
 
+// 🎯 ADD THIS LINE: IMPORT THE CHATBOT COMPONENT
+import ChatbotWidget from '@/components/ChatbotWidget'; 
+
 export default function RootLayout({ children }) {
-    useEffect(() => {
-        // This ensures Bootstrap JS runs only on the client side after mounting
-        require('bootstrap/dist/js/bootstrap.min.js');
-    }, []);
+    useEffect(() => {
+        // This ensures Bootstrap JS runs only on the client side after mounting
+        require('bootstrap/dist/js/bootstrap.min.js');
+    }, []);
 
-    return (
-        <html lang="en">
-            <head>
-                <link rel='icon' type='image/png' href='../favicon.png' />
-            </head>
-            <body>
-                {/* 2. RENDER HEADER TWO */}
-                <HeaderTwo />
-                
-                <SwitchTab /> 
-                
-                {/* {children} renders the specific page content (e.g., about page, services page) */}
-                <main>
-                    {children}
-                </main>
-                <ChatbotWidget />
-
-                {/* 3. RENDER FOOTER TWO */}
-                <FooterTwo />
-                
-            </body>
-        </html>
-    );
+    return (
+        <html lang="en">
+            <head>
+                <link rel='icon' type='image/png' href='../favicon.png' />
+            </head>
+            <body>
+                <HeaderTwo />
+                
+                <SwitchTab /> 
+                
+                <main>
+                    {children}
+                </main>
+                
+                <FooterTwo />
+                
+                {/* 🎯 THIS COMPONENT IS NOW RECOGNIZED */}
+                <ChatbotWidget /> 
+            </body>
+        </html>
+    );
 }
